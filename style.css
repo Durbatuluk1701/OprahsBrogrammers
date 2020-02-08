@@ -23,7 +23,16 @@ img {
     width: 90px;
 }
 
-.grid-container {
+#key {
+    text-align: center;
+    background-color: lightslategray;
+    height: 150px;
+    width: 600px;
+    margin-bottom: 15px;
+    margin-left: 30.25%;
+}
+
+#grid-container {
     display: grid;
     grid-column-gap: 5px;
     grid-row-gap: 5px;
