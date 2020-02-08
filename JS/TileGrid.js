@@ -20,6 +20,12 @@ class TileGrid {
         this.bossExists = false;
         this.castleExists = false;
         this.playerExists = false;
+        this.playerX = null;
+        this.playerY = null;
+        this.castleX = null;
+        this.castleY = null;
+        this.bossX = null;
+        this.bossY = null;
     }
     generateTiles() {
         for (let i = 0; i < 5; i++) {
@@ -28,6 +34,8 @@ class TileGrid {
                 if (!this.playerExists) {
                     if (Math.floor(100 * Math.random()) > 95) {
                         this.tileArray[i][j] = new Tile("player");
+                        this.playerX = i;
+                        this.playerY = j;
                         this.playerExists = true;
                         continue;
                     }
@@ -35,6 +43,8 @@ class TileGrid {
                 if (!this.bossExists) {
                     if (Math.floor(100 * Math.random()) > 95) {
                         this.tileArray[i][j] = new Tile("boss");
+                        this.bossX = i;
+                        this.bossY = j;
                         this.bossExists = true;
                         continue;
                     }
@@ -42,6 +52,8 @@ class TileGrid {
                 if (!this.castleExists) {
                     if (Math.floor(100 * Math.random()) > 95) {
                         this.tileArray[i][j] = new Tile("castle");
+                        this.castleX = i;
+                        this.castleY = j;
                         this.castleExists = true;
                         continue;
                     }
@@ -56,49 +68,67 @@ class TileGrid {
         if (!this.playerExists) {
             if (this.tileArray[2][2].type != "grass" || this.tileArray[2][2].type != "coin") {
                 this.tileArray[2][2] = new Tile("player");
+                this.playerX = 2;
+                this.playerY = 2;
                 this.playerExists = true;
             }
             if (!this.playerExists && (this.tileArray[2][3].type != "grass" || this.tileArray[2][3].type != "coin")) {
                 this.tileArray[2][3] = new Tile("player");
+                this.playerX = 2;
+                this.playerY = 3;
                 this.playerExists = true;
             }
             if (!this.playerExists && (this.tileArray[2][4].type != "grass" || this.tileArray[2][4].type != "coin")) {
                 this.tileArray[2][4] = new Tile("player");
+                this.playerX = 2;
+                this.playerY = 4;
                 this.playerExists = true;
             }
         }
         if (!this.bossExists) {
             if (this.tileArray[0][0].type != "grass" || this.tileArray[0][0].type != "coin") {
                 this.tileArray[0][0] = new Tile("boss");
+                this.bossX = 0;
+                this.bossY = 0;
                 this.bossExists = true;
             }
             if (!this.bossExists && (this.tileArray[0][1].type != "grass" || this.tileArray[0][1].type != "coin")) {
                 this.tileArray[0][1] = new Tile("boss");
+                this.bossX = 0;
+                this.bossY = 1;
                 this.bossExists = true;
             }
             if (!this.bossExists && (this.tileArray[0][2].type != "grass" || this.tileArray[0][2].type != "coin")) {
                 this.tileArray[0][2] = new Tile("boss");
+                this.bossX = 0;
+                this.bossY = 2;
                 this.bossExists = true;
             }
         }
         if (!this.castleExists) {
             if (this.tileArray[4][4].type != "grass" || this.tileArray[2][2].type != "coin") {
                 this.tileArray[4][4] = new Tile("castle");
+                this.castleX = 4;
+                this.castleY = 4;
                 this.castleExists = true;
             }
             if (!this.castleExists && (this.tileArray[4][3].type != "grass" || this.tileArray[4][3].type != "coin")) {
                 this.tileArray[4][3] = new Tile("castle");
+                this.castleX = 4;
+                this.castleY = 3;
                 this.castleExists = true;
             }
             if (!this.castleExists && (this.tileArray[4][2].type != "grass" || this.tileArray[4][2].type != "coin")) {
                 this.tileArray[4][2] = new Tile("castle");
+                this.castleX = 4;
+                this.castleY = 2;
                 this.castleExists = true;
             }
         }
     }
     printTiles() {
         for (var i = 0; i < 5; i++) {
-            console.log(this.tileArray[i][0].thing, this.tileArray[i][1].thing, this.tileArray[i][2].thing, this.tileArray[i][3].thing, this.tileArray[i][4].thing);
+            console.log(this.tileArray[i][0].type, this.tileArray[i][1].type, this.tileArray[i][2].type, this.tileArray[i][3].type, this.tileArray[i][4].type);
         }
     }
     startTime() {
@@ -120,9 +150,117 @@ class TileGrid {
             }
         }
     }
+    restartGame() {
+        this.generateTiles();
+        this.assignTiles();
+    }
+    gameLost() {
+        this.gameOver = true;
+        console.log("GAME OVER");
+    }
+    gameWon() {
+        var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
+        if (playAgain.toLowerCase() == "y") {
+            this.restartGame();
+        }
+        console.log("GAME WON");
+    }
+    playerMovePossible(moveDir) {
+        if (moveDir == "x+") {
+            return (this.playerX+1 < 5 && this.playerX+1 >= 0 ? true : false);
+        }
+        if (moveDir == "x-") {
+            return (this.playerX-1 < 5 && this.playerX-1 >= 0 ? true : false);
+        }
+        if (moveDir == "y+") {
+            return (this.playerY+1 < 5 && this.playerY+1 >= 0 ? true : false);
+        }
+        if (moveDir == "y-") {
+            return (this.playerY-1 < 5 && this.playerY-1 >= 0 ? true : false);
+        }
+        return false;
+    }
+    bossMovePossible(moveDir) {
+        if (moveDir == "x+") {
+            return (this.bossX+1 < 5 && this.bossX+1 >= 0 ? true : false);
+        }
+        if (moveDir == "x-") {
+            return (this.bossX-1 < 5 && this.bossX-1 >= 0 ? true : false);
+        }
+        if (moveDir == "y+") {
+            return (this.bossY+1 < 5 && this.bossY+1 >= 0 ? true : false);
+        }
+        if (moveDir == "y-") {
+            return (this.bossY-1 < 5 && this.bossY-1 >= 0 ? true : false);
+        }
+        return false;
+    }
+    movePlayerLeft() {
+        if (this.playerMovePossible("y-")) {
+            if (this.tileArray[this.playerX][this.playerY-1].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX][this.playerY-1].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX][this.playerY-1].type == "castle") {
+                this.gameWon();
+            }
+            this.tileArray[this.playerX][this.playerY-1] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerY--;
+            console.log(this.tileArray);
+        }
+    }
+    movePlayerUp() {
+        if (this.playerMovePossible("x-")) {
+            if (this.tileArray[this.playerX-1][this.playerY].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX-1][this.playerY].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX-1][this.playerY].type == "castle") {
+                this.gameWon();
+            }
+            this.tileArray[this.playerX-1][this.playerY] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerX--;
+            console.log(this.tileArray);
+        }
+    }
+    movePlayerRight() {
+        if (this.playerMovePossible("y+")) {
+            if (this.tileArray[this.playerX][this.playerY+1].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX][this.playerY+1].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX][this.playerY+1].type == "castle") {
+                this.gameWon();
+            }
+            this.tileArray[this.playerX][this.playerY+1] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerY++;
+            console.log(this.tileArray);
+        }
+    }
+    movePlayerDown() {
+        if (this.playerMovePossible("x+")) {
+            if (this.tileArray[this.playerX+1][this.playerY].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX+1][this.playerY].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX+1][this.playerY].type == "castle") {
+                this.gameWon();
+            }
+            this.tileArray[this.playerX+1][this.playerY] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerX++;
+            console.log(this.tileArray);
+        }
+    }
 };
-
-var TileGrid1 = new TileGrid();
-TileGrid1.generateTiles();
-TileGrid1.printTiles();
-TileGrid1.assignTiles();

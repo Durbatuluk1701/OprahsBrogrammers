@@ -1,62 +1,112 @@
 <!DOCTYPE html>
 <!--
 Name: Jet Semrick
-File: 1--Initial
+File: index.html
+Date: 02-08-2020
 -->
 
 <head>
-    <title>PPSchnitz</title>
+    <title>Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="JS/TileGrid.js"></script>
     <script type="text/javascript">
         function startGame()
         {
-            console.log("Game has been started");
-            console.log("Changing photos");
-            document.getElementById('box1').innerHTML =  '<img src="./image-folder/Coin.png"></img>';
+            var grid = new TileGrid();
+            grid.generateTiles();
+            grid.assignTiles();
+            document.onkeydown = function(event) {
+                switch (event.keyCode) {
+                case 37:
+                    grid.movePlayerLeft();
+                    grid.assignTiles();
+                    break;
+                case 38:
+                    grid.movePlayerUp();
+                    break;
+                case 39:
+                    grid.movePlayerRight();
+                    break;
+                case 40:
+                    grid.movePlayerDown();
+                    break;
+                }
+                grid.assignTiles();
+            };
         }
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div class="title">
-        <h1>Adventure Time With Oprah's Brogrammers</h1>
+        <h1>Knights of the Orange Castle</h1>
     </div>
     <div id=subtitle>
         <p>Created by: Alex, Cole, Jet, and Will</p>
     </div>
-   <div id="key"></div>
-    <p onclick="startGame();">Welcome to Game Please Click Start </p>
+    <!-- <img id = "jayhawk" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
+    <img id = "jayhawk2" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
+    -->
+    <div id = "score">
+    </div>
+   <div id="key">
+       <button class = "instruction" id = "startbutton" onclick="startGame();">Start</button>
+       <br id = "list" class = "instruction"><br><ol>
+        <li class = "instruction">Use the arrow keys to move your character</li>
+        <li class = "instruction">Try to reach the castle</li>
+        <li class = "instruction">Don't get caught by the evil knight!</li>
+   </ol>
+</div>
     <!-- tile grid-->
     <div id="game">
         <div id="grid-container">
-            <div class="box" id="box1">1
+            <div class="box" id="box1">
                 <img src = "./image-folder/Grass.png" alt = "Grass" id = "box1">
             </div>
-            <div class="box" id="box2">2</div>
-            <div class="box" id="box3">3</div>
-            <div class="box" id="box4">4</div>
-            <div class="box" id="box5">5</div>
-            <div class="box" id="box6">6</div>
-            <div class="box" id="box7">7</div>
-            <div class="box" id="box8">8</div>
-            <div class="box" id="box9">9</div>
-            <div class="box" id="box10">10</div>
-            <div class="box" id="box11">11</div>
-            <div class="box" id="box12">12</div>
-            <div class="box" id="box13">13</div>
-            <div class="box" id="box14">14</div>
-            <div class="box" id="box15">15</div>
-            <div class="box" id="box16">16</div>
-            <div class="box" id="box17">17</div>
-            <div class="box" id="box18">18</div>
-            <div class="box" id="box19">19</div>
-            <div class="box" id="box20">20</div>
-            <div class="box" id="box21">21</div>
-            <div class="box" id="box22">22</div>
-            <div class="box" id="box23">23</div>
-            <div class="box" id="box24">24</div>
-            <div class="box" id="box25">25</div>
+            <div class="box" id="box2"></div>
+            <div class="box" id="box3"></div>
+            <div class="box" id="box4"></div>
+            <div class="box" id="box5"></div>
+            <div class="box" id="box6"></div>
+            <div class="box" id="box7"></div>
+            <div class="box" id="box8"></div>
+            <div class="box" id="box9"></div>
+            <div class="box" id="box10"></div>
+            <div class="box" id="box11"></div>
+            <div class="box" id="box12"></div>
+            <div class="box" id="box13"></div>
+            <div class="box" id="box14"></div>
+            <div class="box" id="box15"></div>
+            <div class="box" id="box16"></div>
+            <div class="box" id="box17"></div>
+            <div class="box" id="box18"></div>
+            <div class="box" id="box19"></div>
+            <div class="box" id="box20"></div>
+            <div class="box" id="box21"></div>
+            <div class="box" id="box22"></div>
+            <div class="box" id="box23"></div>
+            <div class="box" id="box24"></div>
+            <div class="box" id="box25"></div>
         </div>
     </div>
+    <script type="text/javascript">
+        document.onkeydown = function(event) {
+            switch (event.keyCode) {
+               case 37:
+                   console.log("LEFT");
+                   break;
+               case 38:
+                   console.log("UP");
+                   break;
+               case 39:
+                   console.log("RIGHT");
+                   break;
+               case 40:
+                   console.log("DOWN");
+                   break;
+            }
+        };
+    </script>
     <script src="JS/TileGrid.js"></script>
 </div>
 </body>
