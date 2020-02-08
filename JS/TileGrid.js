@@ -1,10 +1,23 @@
-
-class Tile {
-    constructor(name) {
-        this.thing = name;
+class Tile
+{
+    constructor(name)
+    {
+        this.blockNumber;
+        this.type = name;
+        console.log(name);
     }
-};
-
+    printName() 
+    {
+        console.log(name);
+        if(name = "human")
+        {
+            console.log("Changing photos");
+            var image = document.getElementById('block1');
+            console.log("Photo Location found");
+            image.src = "block1.png"
+        }
+    }
+}
 
 class TileGrid {
     constructor() {
@@ -79,11 +92,18 @@ class TileGrid {
     logTime() {
         console.log(this.time);
     }
+    assignTiles() {
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                let boxNum = "box" + (((i*5) + j)+1);
+                console.log(boxNum);
+                document.getElementById(boxNum).innerHTML = '<img src="./image-folder/grass.png" ></img>';
+            }
+        }
+    }
 };
 
 var TileGrid1 = new TileGrid();
 TileGrid1.generateTiles();
 TileGrid1.printTiles();
-TileGrid1.startTime();
-console.log(TileGrid1);
-TileGrid1.logTime();
+TileGrid1.assignTiles();
