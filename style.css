@@ -12,6 +12,9 @@ body {
     background-color: cornflowerblue;
     margin-top: 10px;
 }
+#startbutton {
+    margin-top: 10px;
+}
 
 #subtitle {
     color: white;
@@ -55,6 +58,11 @@ img {
 .instruction {
     font-family: arial;
     font-size: 16px;
+
+}
+
+#list {
+    margin-top: -10px;
 }
 
 #grid-container {
