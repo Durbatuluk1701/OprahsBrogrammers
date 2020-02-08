@@ -1,5 +1,6 @@
 body {
     background-image: url(./image-folder/Water.png);
+    
 }
 
 .title {
@@ -8,6 +9,7 @@ body {
     font-family: arial; 
     height: 50px;
     width: 100%;
+    background-color: cornflowerblue;
 }
 
 #subtitle {
