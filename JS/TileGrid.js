@@ -151,13 +151,35 @@ class TileGrid {
         }
     }
     movePlayerLeft() {
-        this.tileArray[this.playerX-1][this.playerY].type = "player";
-        this.tileArray[this.playerX][this.playerY].type = "grass";
+        this.tileArray[this.playerX][this.playerY-1] = new Tile("player");
+        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+        this.playerY--;
+        console.log(this.tileArray);
+    }
+    movePlayerUp() {
+        this.tileArray[this.playerX-1][this.playerY] = new Tile("player");
+        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+        this.playerX--;
+        console.log(this.tileArray);
+    }
+    movePlayerRight() {
+        this.tileArray[this.playerX][this.playerY+1] = new Tile("player");
+        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+        this.playerY++;
+        console.log(this.tileArray);
+    }
+    movePlayerDown() {
+        this.tileArray[this.playerX+1][this.playerY] = new Tile("player");
+        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+        this.playerX++;
+        console.log(this.tileArray);
     }
 };
 
 var grid = new TileGrid();
 grid.generateTiles();
+grid.assignTiles();
+
 document.onkeydown = function(event) {
     switch (event.keyCode) {
        case 37:
@@ -174,7 +196,5 @@ document.onkeydown = function(event) {
            grid.movePlayerDown();
            break;
     }
+    grid.assignTiles();
 };
-
-TileGrid1.printTiles();
-TileGrid1.assignTiles();
