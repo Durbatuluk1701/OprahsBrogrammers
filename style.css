@@ -1,15 +1,17 @@
 body {
-    background-image: url(https://wallpaperaccess.com/full/1559446.jpg);
+    background-image: url(./image-folder/Water.png);
 }
 
 .title {
-    color: blue;
+    color: white;
     text-align: center;
     font-family: arial; 
+    height: 50px;
+    width: 100%;
 }
 
 #subtitle {
-    color: blue;
+    color: white;
     text-align: center;
     font-family: arial;
 }
@@ -39,7 +41,8 @@ img {
 
 #key {
     text-align: center;
-    background-color: lightslategray;
+    background-color: gainsboro;
+    opacity: .80;
     height: 150px;
     width: 600px;
     margin-bottom: 15px;
