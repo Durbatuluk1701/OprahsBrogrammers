@@ -17,9 +17,4 @@ class Tile
             image.src = "block1.png"
         }
     }
-    
-
 }
-var name = window.prompt("Enter: ");
-let block = new Tile(name); 
-block.printName();
