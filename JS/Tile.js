@@ -12,7 +12,7 @@ class Tile
         if(name = "human")
         {
             console.log("Changing photos");
-            var image = document.getElementById('block1');
+            var image = document.getElementById('box1');
             console.log("Photo Location found");
             image.src = "block1.png"
         }

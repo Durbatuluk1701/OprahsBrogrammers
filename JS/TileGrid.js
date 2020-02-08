@@ -4,18 +4,8 @@ class Tile
     {
         this.blockNumber;
         this.type = name;
+        this.source = `<img src="./image-folder/${name}.png"></img>`;
         console.log(name);
-    }
-    printName() 
-    {
-        console.log(name);
-        if(name = "human")
-        {
-            console.log("Changing photos");
-            var image = document.getElementById('block1');
-            console.log("Photo Location found");
-            image.src = "block1.png"
-        }
     }
 }
 
@@ -64,16 +54,46 @@ class TileGrid {
             }
         }
         if (!this.playerExists) {
-            this.tileArray[2][2] = new Tile("player");
-            this.playerExists = true;
+            if (this.tileArray[2][2].type != "grass" || this.tileArray[2][2].type != "coin") {
+                this.tileArray[2][2] = new Tile("player");
+                this.playerExists = true;
+            }
+            if (!this.playerExists && (this.tileArray[2][3].type != "grass" || this.tileArray[2][3].type != "coin")) {
+                this.tileArray[2][3] = new Tile("player");
+                this.playerExists = true;
+            }
+            if (!this.playerExists && (this.tileArray[2][4].type != "grass" || this.tileArray[2][4].type != "coin")) {
+                this.tileArray[2][4] = new Tile("player");
+                this.playerExists = true;
+            }
         }
         if (!this.bossExists) {
-            this.tileArray[0][0] = new Tile("boss");
-            this.bossExists = true;
+            if (this.tileArray[0][0].type != "grass" || this.tileArray[0][0].type != "coin") {
+                this.tileArray[0][0] = new Tile("boss");
+                this.bossExists = true;
+            }
+            if (!this.bossExists && (this.tileArray[0][1].type != "grass" || this.tileArray[0][1].type != "coin")) {
+                this.tileArray[0][1] = new Tile("boss");
+                this.bossExists = true;
+            }
+            if (!this.bossExists && (this.tileArray[0][2].type != "grass" || this.tileArray[0][2].type != "coin")) {
+                this.tileArray[0][2] = new Tile("boss");
+                this.bossExists = true;
+            }
         }
         if (!this.castleExists) {
-            this.tileArray[4][4] = new Tile("castle");
-            this.castleExists = true;
+            if (this.tileArray[4][4].type != "grass" || this.tileArray[2][2].type != "coin") {
+                this.tileArray[4][4] = new Tile("castle");
+                this.castleExists = true;
+            }
+            if (!this.castleExists && (this.tileArray[4][3].type != "grass" || this.tileArray[4][3].type != "coin")) {
+                this.tileArray[4][3] = new Tile("castle");
+                this.castleExists = true;
+            }
+            if (!this.castleExists && (this.tileArray[4][2].type != "grass" || this.tileArray[4][2].type != "coin")) {
+                this.tileArray[4][2] = new Tile("castle");
+                this.castleExists = true;
+            }
         }
     }
     printTiles() {
@@ -96,8 +116,7 @@ class TileGrid {
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 let boxNum = "box" + (((i*5) + j)+1);
-                console.log(boxNum);
-                document.getElementById(boxNum).innerHTML = '<img src="./image-folder/grass.png" ></img>';
+                document.getElementById(boxNum).innerHTML = this.tileArray[i][j].source;
             }
         }
     }
