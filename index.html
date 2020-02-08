@@ -8,12 +8,31 @@ Date: 02-08-2020
 <head>
     <title>Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="JS/TileGrid.js"></script>
     <script type="text/javascript">
         function startGame()
         {
-            console.log("Game has been started");
-            console.log("Changing photos");
-            document.getElementById('box1').innerHTML =  '<img src="./image-folder/Coin.png"></img>';
+            var grid = new TileGrid();
+            grid.generateTiles();
+            grid.assignTiles();
+            document.onkeydown = function(event) {
+                switch (event.keyCode) {
+                case 37:
+                    grid.movePlayerLeft();
+                    grid.assignTiles();
+                    break;
+                case 38:
+                    grid.movePlayerUp();
+                    break;
+                case 39:
+                    grid.movePlayerRight();
+                    break;
+                case 40:
+                    grid.movePlayerDown();
+                    break;
+                }
+                grid.assignTiles();
+            };
         }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">

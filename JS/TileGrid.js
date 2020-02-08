@@ -175,26 +175,3 @@ class TileGrid {
         console.log(this.tileArray);
     }
 };
-
-var grid = new TileGrid();
-grid.generateTiles();
-grid.assignTiles();
-
-document.onkeydown = function(event) {
-    switch (event.keyCode) {
-       case 37:
-           grid.movePlayerLeft();
-           grid.assignTiles();
-           break;
-       case 38:
-           grid.movePlayerUp();
-           break;
-       case 39:
-           grid.movePlayerRight();
-           break;
-       case 40:
-           grid.movePlayerDown();
-           break;
-    }
-    grid.assignTiles();
-};
