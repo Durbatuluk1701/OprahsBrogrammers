@@ -57,6 +57,24 @@ File: 1--Initial
             <div class="box" id="box25">25</div>
         </div>
     </div>
+    <script type="text/javascript">
+        document.onkeydown = function(event) {
+            switch (event.keyCode) {
+               case 37:
+                   console.log("LEFT");
+                   break;
+               case 38:
+                   console.log("UP");
+                   break;
+               case 39:
+                   console.log("RIGHT");
+                   break;
+               case 40:
+                   console.log("DOWN");
+                   break;
+            }
+        };
+    </script>
     <script src="JS/TileGrid.js"></script>
 </div>
 </body>
