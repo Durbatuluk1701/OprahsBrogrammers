@@ -150,28 +150,66 @@ class TileGrid {
             }
         }
     }
+    playerMovePossible(moveDir) {
+        if (moveDir == "x+") {
+            return (this.playerX+1 < 5 && this.playerX+1 >= 0 ? true : false);
+        }
+        if (moveDir == "x-") {
+            return (this.playerX-1 < 5 && this.playerX-1 >= 0 ? true : false);
+        }
+        if (moveDir == "y+") {
+            return (this.playerY+1 < 5 && this.playerY+1 >= 0 ? true : false);
+        }
+        if (moveDir == "y-") {
+            return (this.playerY-1 < 5 && this.playerY-1 >= 0 ? true : false);
+        }
+        return false;
+    }
+    bossMovePossible(moveDir) {
+        if (moveDir == "x+") {
+            return (this.bossX+1 < 5 && this.bossX+1 >= 0 ? true : false);
+        }
+        if (moveDir == "x-") {
+            return (this.bossX-1 < 5 && this.bossX-1 >= 0 ? true : false);
+        }
+        if (moveDir == "y+") {
+            return (this.bossY+1 < 5 && this.bossY+1 >= 0 ? true : false);
+        }
+        if (moveDir == "y-") {
+            return (this.bossY-1 < 5 && this.bossY-1 >= 0 ? true : false);
+        }
+        return false;
+    }
     movePlayerLeft() {
-        this.tileArray[this.playerX][this.playerY-1] = new Tile("player");
-        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
-        this.playerY--;
-        console.log(this.tileArray);
+        if (this.playerMovePossible("y-")) {
+            this.tileArray[this.playerX][this.playerY-1] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerY--;
+            console.log(this.tileArray);
+        }
     }
     movePlayerUp() {
-        this.tileArray[this.playerX-1][this.playerY] = new Tile("player");
-        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
-        this.playerX--;
-        console.log(this.tileArray);
+        if (this.playerMovePossible("x-")) {
+            this.tileArray[this.playerX-1][this.playerY] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerX--;
+            console.log(this.tileArray);
+        }
     }
     movePlayerRight() {
-        this.tileArray[this.playerX][this.playerY+1] = new Tile("player");
-        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
-        this.playerY++;
-        console.log(this.tileArray);
+        if (this.playerMovePossible("y+")) {
+            this.tileArray[this.playerX][this.playerY+1] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerY++;
+            console.log(this.tileArray);
+        }
     }
     movePlayerDown() {
-        this.tileArray[this.playerX+1][this.playerY] = new Tile("player");
-        this.tileArray[this.playerX][this.playerY] = new Tile("grass");
-        this.playerX++;
-        console.log(this.tileArray);
+        if (this.playerMovePossible("x+")) {
+            this.tileArray[this.playerX+1][this.playerY] = new Tile("player");
+            this.tileArray[this.playerX][this.playerY] = new Tile("grass");
+            this.playerX++;
+            console.log(this.tileArray);
+        }
     }
 };
