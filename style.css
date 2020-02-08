@@ -14,6 +14,8 @@ body {
 }
 #startbutton {
     margin-top: 10px;
+    height: 40px;
+    width: 80px;
 }
 
 #subtitle {
@@ -24,20 +26,6 @@ body {
 #game {
     position: absolute;
     left: 30.25%;
-}
-
-#jayhawk {
-    height: 150px;
-    width: 150px;
-    float: left;
-    margin-left: 18%;
-}
-
-#jayhawk2 {
-    height: 150px;
-    width: 150px;
-    float: right;
-    margin-right: 18%;
 }
 
 img {
@@ -62,7 +50,29 @@ img {
 }
 
 #list {
-    margin-top: -10px;
+    margin-bottom: 10px;
+}
+/*
+#jayhawk {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-left: 18%;
+}
+
+#jayhawk2 {
+    height: 150px;
+    width: 150px;
+    float: right;
+    margin-right: 18%;
+}
+*/
+#score {
+    float: right;
+    background-color: gainsboro;
+    height: 150px;
+    width: 150px;
+    margin-right: 18%;
 }
 
 #grid-container {
