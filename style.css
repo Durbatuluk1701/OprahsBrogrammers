@@ -1,6 +1,6 @@
 @media screen and (max-device-width: 640px){
     body {
-        background-color: blueviolet;
+        background-image: url(./image-folder/Water.png);
         
     }
     
@@ -8,15 +8,19 @@
         color: white;
         text-align: center;
         font-family: arial; 
-        height: 50px;
-        width: 100%;
+        height: 30px;
+        width: 118%;
         background-color: cornflowerblue;
-        margin-top: 10px;
     }
+
+    h1 {
+        font-size: 25px;
+    }
+
     #startbutton {
         margin-top: 10px;
-        height: 40px;
-        width: 80px;
+        height: 25px;
+        width: 50px;
     }
     
     #subtitle {
@@ -34,26 +38,25 @@
         width: 100%;
     }
     
-    #key {
+    /* #key {
         text-align: center;
         background-color: gainsboro;
         opacity: .80;
-        height: 150px;
-        width: 600px;
+        height: 93.75px;
+        width: 375px;
         margin-bottom: 15px;
-        margin-left: 30.25%;
     }
     
     .instruction {
         font-family: arial;
-        font-size: 16px;
+        font-size: 10px;
     
     }
     
     #list {
-        margin-bottom: 10px;
+        margin-bottom: .625px;
     }
-    /*
+    
     #jayhawk {
         height: 150px;
         width: 150px;
@@ -71,8 +74,8 @@
     #score {
         float: right;
         background-color: gainsboro;
-        height: 150px;
-        width: 150px;
+        height: 93.75px;
+        width: 93.75px;
         margin-right: 18%;
     }
     
@@ -81,8 +84,8 @@
         grid-template-columns: auto auto auto auto auto;
         background-image: url(./image-folder/Grass.png);
         padding: .5%;
-        height: 600px;
-        width: 600px;
+        height: 405px;
+        width: 405px;
         
     }
     
@@ -90,13 +93,12 @@
         text-align: center;
         height: 100%;
         width: 100%;
-        font-size: 10px;
+        font-size: .625px;
         text-align: center;
         overflow: hidden;
     }
 }
-
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 640px){
 
 /*actual css for website */
 
