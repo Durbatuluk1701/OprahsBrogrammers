@@ -132,6 +132,10 @@ body {
     left: 30.25%;
 }
 
+h2 {
+    color: orange;
+}
+
 img {
     height: 100%;
     width: 100%;
@@ -151,6 +155,9 @@ img {
 .instruction {
     font-family: arial;
     font-size: 16px;
+    text-align: left;
+    margin-left: 1px;
+    margin-right: 5px;
 
 }
 
@@ -177,9 +184,8 @@ img {
     background-color: gainsboro;
     height: 600px;
     width: 250px;
-    margin-right: 18%;
+    margin-right: 10.25%;
     opacity: .80;
-    margin-right: 20px;
 }
 
 #grid-container {
