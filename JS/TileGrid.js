@@ -150,6 +150,21 @@ class TileGrid {
             }
         }
     }
+    restartGame() {
+        this.generateTiles();
+        this.assignTiles();
+    }
+    gameLost() {
+        this.gameOver = true;
+        console.log("GAME OVER");
+    }
+    gameWon() {
+        var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
+        if (playAgain.toLowerCase() == "y") {
+            this.restartGame();
+        }
+        console.log("GAME WON");
+    }
     playerMovePossible(moveDir) {
         if (moveDir == "x+") {
             return (this.playerX+1 < 5 && this.playerX+1 >= 0 ? true : false);
@@ -182,6 +197,15 @@ class TileGrid {
     }
     movePlayerLeft() {
         if (this.playerMovePossible("y-")) {
+            if (this.tileArray[this.playerX][this.playerY-1].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX][this.playerY-1].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX][this.playerY-1].type == "castle") {
+                this.gameWon();
+            }
             this.tileArray[this.playerX][this.playerY-1] = new Tile("player");
             this.tileArray[this.playerX][this.playerY] = new Tile("grass");
             this.playerY--;
@@ -190,6 +214,15 @@ class TileGrid {
     }
     movePlayerUp() {
         if (this.playerMovePossible("x-")) {
+            if (this.tileArray[this.playerX-1][this.playerY].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX-1][this.playerY].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX-1][this.playerY].type == "castle") {
+                this.gameWon();
+            }
             this.tileArray[this.playerX-1][this.playerY] = new Tile("player");
             this.tileArray[this.playerX][this.playerY] = new Tile("grass");
             this.playerX--;
@@ -198,6 +231,15 @@ class TileGrid {
     }
     movePlayerRight() {
         if (this.playerMovePossible("y+")) {
+            if (this.tileArray[this.playerX][this.playerY+1].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX][this.playerY+1].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX][this.playerY+1].type == "castle") {
+                this.gameWon();
+            }
             this.tileArray[this.playerX][this.playerY+1] = new Tile("player");
             this.tileArray[this.playerX][this.playerY] = new Tile("grass");
             this.playerY++;
@@ -206,6 +248,15 @@ class TileGrid {
     }
     movePlayerDown() {
         if (this.playerMovePossible("x+")) {
+            if (this.tileArray[this.playerX+1][this.playerY].type == "coin") {
+                this.playerScore++;
+            }
+            if (this.tileArray[this.playerX+1][this.playerY].type == "boss") {
+                this.gameLost();
+            }
+            if (this.tileArray[this.playerX+1][this.playerY].type == "castle") {
+                this.gameWon();
+            }
             this.tileArray[this.playerX+1][this.playerY] = new Tile("player");
             this.tileArray[this.playerX][this.playerY] = new Tile("grass");
             this.playerX++;

@@ -1,3 +1,105 @@
+@media screen and (max-device-width: 640px){
+    body {
+        background-color: blueviolet;
+        
+    }
+    
+    .title {
+        color: white;
+        text-align: center;
+        font-family: arial; 
+        height: 50px;
+        width: 100%;
+        background-color: cornflowerblue;
+        margin-top: 10px;
+    }
+    #startbutton {
+        margin-top: 10px;
+        height: 40px;
+        width: 80px;
+    }
+    
+    #subtitle {
+        color: white;
+        text-align: center;
+        font-family: arial;
+    }
+    #game {
+        position: absolute;
+        left: 30.25%;
+    }
+    
+    img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    #key {
+        text-align: center;
+        background-color: gainsboro;
+        opacity: .80;
+        height: 150px;
+        width: 600px;
+        margin-bottom: 15px;
+        margin-left: 30.25%;
+    }
+    
+    .instruction {
+        font-family: arial;
+        font-size: 16px;
+    
+    }
+    
+    #list {
+        margin-bottom: 10px;
+    }
+    /*
+    #jayhawk {
+        height: 150px;
+        width: 150px;
+        float: left;
+        margin-left: 18%;
+    }
+    
+    #jayhawk2 {
+        height: 150px;
+        width: 150px;
+        float: right;
+        margin-right: 18%;
+    }
+    */
+    #score {
+        float: right;
+        background-color: gainsboro;
+        height: 150px;
+        width: 150px;
+        margin-right: 18%;
+    }
+    
+    #grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        background-image: url(./image-folder/Grass.png);
+        padding: .5%;
+        height: 600px;
+        width: 600px;
+        
+    }
+    
+    .box {
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        font-size: 10px;
+        text-align: center;
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 1024px){
+
+/*actual css for website */
+
 body {
     background-image: url(./image-folder/Water.png);
     
@@ -12,6 +114,11 @@ body {
     background-color: cornflowerblue;
     margin-top: 10px;
 }
+#startbutton {
+    margin-top: 10px;
+    height: 40px;
+    width: 80px;
+}
 
 #subtitle {
     color: white;
@@ -21,20 +128,6 @@ body {
 #game {
     position: absolute;
     left: 30.25%;
-}
-
-#jayhawk {
-    height: 150px;
-    width: 150px;
-    float: left;
-    margin-left: 18%;
-}
-
-#jayhawk2 {
-    height: 150px;
-    width: 150px;
-    float: right;
-    margin-right: 18%;
 }
 
 img {
@@ -55,6 +148,33 @@ img {
 .instruction {
     font-family: arial;
     font-size: 16px;
+
+}
+
+#list {
+    margin-bottom: 10px;
+}
+/*
+#jayhawk {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-left: 18%;
+}
+
+#jayhawk2 {
+    height: 150px;
+    width: 150px;
+    float: right;
+    margin-right: 18%;
+}
+*/
+#score {
+    float: right;
+    background-color: gainsboro;
+    height: 150px;
+    width: 150px;
+    margin-right: 18%;
 }
 
 #grid-container {
@@ -74,4 +194,5 @@ img {
     font-size: 10px;
     text-align: center;
     overflow: hidden;
+}
 }
