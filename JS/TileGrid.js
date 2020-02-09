@@ -214,40 +214,18 @@ class TileGrid {
         return false;
     }
     bossMovePossible(moveDir) {
-            
-            if (moveDir == "x-"&& this.tileArray[this.bossX-1][this.bossY].type != "castle") 
-            {
-                return (true)
-            }
-            else
-            {
-                return (false)
-            }
-            if(moveDir == "x+" && this.tileArray[this.bossX+1][this.bossY].type != "castle")
-            {
-                return (true)
-            }
-            else
-            {
-                return (false)
-            }
-            if (moveDir == "y-" && this.tileArray[this.bossX][this.bossY-1].type != "castle") 
-            {
-                return (true)
-            }
-            else
-            {
-                return (false)
-            }
-            if (moveDir == "y-" && this.tileArray[this.bossX][this.bossY+1].type != "castle") 
-            {
-                return (true)
-            }
-            else
-            {
-                return (false)
-            }
-            
+        if (moveDir == "x+") {
+            return (this.bossX+1 < 5 && this.bossX+1 >= 0 ? true : false);
+        }
+        if (moveDir == "x-") {
+            return (this.bossX-1 < 5 && this.bossX-1 >= 0 ? true : false);
+        }
+        if (moveDir == "y+") {
+            return (this.bossY+1 < 5 && this.bossY+1 >= 0 ? true : false);
+        }
+        if (moveDir == "y-") {
+            return (this.bossY-1 < 5 && this.bossY-1 >= 0 ? true : false);
+        }
         return false;
     }
     moveBoss() {
@@ -275,10 +253,6 @@ class TileGrid {
                 }
                 return;
             }
-        }
-        else
-        {
-            console.log("BOSS MOVE LEFT RIGHT NOT POSSIBLE")
         }
     }
     moveBossLeft() {
@@ -399,7 +373,6 @@ class TileGrid {
             console.log(this.tileArray);
         }
     }
-    //coinSound
     spawnCoins() {
         for (let i = 0; i < this.gridHeight; i++) {
             for (let j = 0; j < this.gridWidth; j++) {
