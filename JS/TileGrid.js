@@ -151,6 +151,7 @@ class TileGrid {
         }
     }
     restartGame() {
+        console.log("Restarting Game");
         this.tileArray = {
 
         };
@@ -170,6 +171,7 @@ class TileGrid {
         this.assignTiles();
     }
     gameLost() {
+<<<<<<< HEAD
         var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
         var x = document.getElementById("DefeatSong.mp3");
         function playAudio() {
@@ -181,13 +183,25 @@ class TileGrid {
         this.gameOver = true;
         console.log("GAME OVER");
         
+=======
+        setTimeout(() => {
+            var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+            if (playAgain.toLowerCase() == "y") {
+                this.restartGame();
+            }
+            this.gameOver = true;
+            console.log("GAME OVER");
+        }, 500);
+>>>>>>> 497ad162b5b03075315e7e3a09e09c07d01ee197
     }
     gameWon() {
-        var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
-        if (playAgain.toLowerCase() == "y") {
-            this.restartGame();
-        }
-        console.log("GAME WON");
+        setTimeout(() => {
+            var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
+            if (playAgain.toLowerCase() == "y") {
+                this.restartGame();
+            }
+            console.log("GAME WON");
+        }, 500);
     }
     playerMovePossible(moveDir) {
         if (moveDir == "x+") {
@@ -243,22 +257,6 @@ class TileGrid {
             }
             return;
         }
-        // if (changeX > 0 && Math.abs(changeX) >= Math.abs(changeY)) {
-        //     this.moveBossUp();
-        //     return;
-        // }
-        // if (changeY > 0 && Math.abs(changeY) >= Math.abs(changeX)) {
-        //     this.moveBossLeft();
-        //     return;
-        // }
-        // if (changeX <= 0 && Math.abs(changeX) <= Math.abs(changeY)) {
-        //     this.moveBossRight();
-        //     return;
-        // }
-        // if (changeY <= 0 && Math.abs(changeY) <= Math.abs(changeX)) {
-        //     this.moveBossDown();
-        //     return;
-        // }
     }
     moveBossLeft() {
         if (this.tileArray[this.bossX][this.bossY-1].type == "player") {
