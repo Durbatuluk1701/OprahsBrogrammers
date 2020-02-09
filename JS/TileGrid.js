@@ -211,18 +211,40 @@ class TileGrid {
         return false;
     }
     bossMovePossible(moveDir) {
-        if (moveDir == "x+") {
-            return (this.bossX+1 < 5 && this.bossX+1 >= 0 ? true : false);
-        }
-        if (moveDir == "x-") {
-            return (this.bossX-1 < 5 && this.bossX-1 >= 0 ? true : false);
-        }
-        if (moveDir == "y+") {
-            return (this.bossY+1 < 5 && this.bossY+1 >= 0 ? true : false);
-        }
-        if (moveDir == "y-") {
-            return (this.bossY-1 < 5 && this.bossY-1 >= 0 ? true : false);
-        }
+            
+            if (moveDir == "x-"&& this.tileArray[this.bossX-1][this.bossY].type != "castle") 
+            {
+                return (true)
+            }
+            else
+            {
+                return (false)
+            }
+            if(moveDir == "x+" && this.tileArray[this.bossX+1][this.bossY].type != "castle")
+            {
+                return (true)
+            }
+            else
+            {
+                return (false)
+            }
+            if (moveDir == "y-" && this.tileArray[this.bossX][this.bossY-1].type != "castle") 
+            {
+                return (true)
+            }
+            else
+            {
+                return (false)
+            }
+            if (moveDir == "y-" && this.tileArray[this.bossX][this.bossY+1].type != "castle") 
+            {
+                return (true)
+            }
+            else
+            {
+                return (false)
+            }
+            
         return false;
     }
     moveBoss() {
@@ -231,8 +253,10 @@ class TileGrid {
         let changeY = (this.bossY-this.playerY)/2;
         console.log(changeX);
         console.log(changeY);
-        if (Math.abs(changeX) > Math.abs(changeY)) {
-            if (changeX > 0) {
+        if (Math.abs(changeX) > Math.abs(changeY) && (this.bossMovePossible("x-") || this.bossMovePossible("x+")))//up and down
+        {
+            if (changeX > 0) //up
+            {
                 this.moveBossUp();
             }
             else {
@@ -240,14 +264,25 @@ class TileGrid {
             }
             return;
         }
-        if (Math.abs(changeX) <= Math.abs(changeY)) {
-            if (changeY > 0) {
+        else
+        {
+            console.log("BOSS MOVE UP/DOWN NOT POSSIBLE")
+        }
+
+        if (Math.abs(changeX) <= Math.abs(changeY) && (this.bossMovePossible("y-") || this.bossMovePossible("y+")))//left right 
+        {
+            if (changeY > 0 && this.bossMovePossible("y-")) //left
+            {
                 this.moveBossLeft();
             }
             else {
                 this.moveBossRight();
             }
             return;
+        }
+        else
+        {
+            console.log("BOSS MOVE LEFT RIGHT NOT POSSIBLE")
         }
     }
     moveBossLeft() {
@@ -368,6 +403,5 @@ class TileGrid {
             console.log(this.tileArray);
         }
     }
-
     //coinSound
 };
