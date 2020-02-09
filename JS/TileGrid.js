@@ -170,19 +170,23 @@ class TileGrid {
         this.assignTiles();
     }
     gameLost() {
-        var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
-        if (playAgain.toLowerCase() == "y") {
-            this.restartGame();
-        }
-        this.gameOver = true;
-        console.log("GAME OVER");
+        setTimeout(() => {
+            var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+            if (playAgain.toLowerCase() == "y") {
+                this.restartGame();
+            }
+            this.gameOver = true;
+            console.log("GAME OVER");
+        }, 500);
     }
     gameWon() {
-        var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
-        if (playAgain.toLowerCase() == "y") {
-            this.restartGame();
-        }
-        console.log("GAME WON");
+        setTimeout(() => {
+            var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
+            if (playAgain.toLowerCase() == "y") {
+                this.restartGame();
+            }
+            console.log("GAME WON");
+        }, 500);
     }
     playerMovePossible(moveDir) {
         if (moveDir == "x+") {
@@ -238,22 +242,6 @@ class TileGrid {
             }
             return;
         }
-        // if (changeX > 0 && Math.abs(changeX) >= Math.abs(changeY)) {
-        //     this.moveBossUp();
-        //     return;
-        // }
-        // if (changeY > 0 && Math.abs(changeY) >= Math.abs(changeX)) {
-        //     this.moveBossLeft();
-        //     return;
-        // }
-        // if (changeX <= 0 && Math.abs(changeX) <= Math.abs(changeY)) {
-        //     this.moveBossRight();
-        //     return;
-        // }
-        // if (changeY <= 0 && Math.abs(changeY) <= Math.abs(changeX)) {
-        //     this.moveBossDown();
-        //     return;
-        // }
     }
     moveBossLeft() {
         if (this.tileArray[this.bossX][this.bossY-1].type == "player") {
