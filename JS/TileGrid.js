@@ -183,6 +183,14 @@ class TileGrid {
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
             }
+            else {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        let boxNum = "box" + (((i*5) + j)+1);
+                        document.getElementById(boxNum).innerHTML = "";
+                    }
+                }
+            }
             this.gameOver = true;
             console.log("GAME OVER");
         }, 500);
@@ -194,6 +202,14 @@ class TileGrid {
             var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
+            }
+            else {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        let boxNum = "box" + (((i*5) + j)+1);
+                        document.getElementById(boxNum).innerHTML = "";
+                    }
+                }
             }
             console.log("GAME WON");
         }, 500);
@@ -264,7 +280,7 @@ class TileGrid {
                     this.moveBossLeft();
                     return;
                 }
-                if (Math.floor(Math.random() * 4) > 1) {
+                if (Math.floor(Math.random() * 4) > 0) {
                     this.moveBossRight();
                     return;
                 }

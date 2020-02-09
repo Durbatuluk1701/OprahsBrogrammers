@@ -13,6 +13,7 @@ Date: 02-08-2020
         function startGame()
         {
             var grid = new TileGrid();
+            grid.updateScore();
             grid.generateTiles();
             grid.assignTiles();
             document.onkeydown = function(event) {
