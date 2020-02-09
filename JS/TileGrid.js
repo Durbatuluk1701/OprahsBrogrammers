@@ -171,28 +171,20 @@ class TileGrid {
         this.assignTiles();
     }
     gameLost() {
-<<<<<<< HEAD
-        var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
-        var x = document.getElementById("DefeatSong.mp3");
-        function playAudio() {
-             x.play();
-        }
-        if (playAgain.toLowerCase() == "y") {
-            this.restartGame();
-        }
-        this.gameOver = true;
-        console.log("GAME OVER");
-        
-=======
         setTimeout(() => {
             var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+            var x = document.getElementById("DefeatSong.mp3");
+            function playAudio() {
+                 x.play();
+            }
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
             }
             this.gameOver = true;
             console.log("GAME OVER");
         }, 500);
->>>>>>> 497ad162b5b03075315e7e3a09e09c07d01ee197
+
+        
     }
     gameWon() {
         setTimeout(() => {
