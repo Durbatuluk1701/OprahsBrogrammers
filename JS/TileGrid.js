@@ -14,6 +14,7 @@ class TileGrid {
         this.tileArray = {
 
         };
+        this.bossIntelligence = 50;
         this.gridHeight = 5;
         this.gridWidth = 5;
         this.gameOver = false;
@@ -228,28 +229,30 @@ class TileGrid {
         return false;
     }
     moveBoss() {
-        console.log("STARTING BOSS MOVE");
-        let changeX = (this.bossX-this.playerX)/2;
-        let changeY = (this.bossY-this.playerY)/2;
-        console.log(changeX);
-        console.log(changeY);
-        if (Math.abs(changeX) > Math.abs(changeY)) {
-            if (changeX > 0) {
-                this.moveBossUp();
+        if (this.gameOver != true) {
+            console.log("STARTING BOSS MOVE");
+            let changeX = (this.bossX-this.playerX)/2;
+            let changeY = (this.bossY-this.playerY)/2;
+            console.log(changeX);
+            console.log(changeY);
+            if (Math.abs(changeX) > Math.abs(changeY)) {
+                if (changeX > 0) {
+                    this.moveBossUp();
+                }
+                else {
+                    this.moveBossDown();
+                }
+                return;
             }
-            else {
-                this.moveBossDown();
+            if (Math.abs(changeX) <= Math.abs(changeY)) {
+                if (changeY > 0) {
+                    this.moveBossLeft();
+                }
+                else {
+                    this.moveBossRight();
+                }
+                return;
             }
-            return;
-        }
-        if (Math.abs(changeX) <= Math.abs(changeY)) {
-            if (changeY > 0) {
-                this.moveBossLeft();
-            }
-            else {
-                this.moveBossRight();
-            }
-            return;
         }
     }
     moveBossLeft() {
@@ -374,12 +377,16 @@ class TileGrid {
         for (let i = 0; i < this.gridHeight; i++) {
             for (let j = 0; j < this.gridWidth; j++) {
                 if (this.tileArray[i][j].type == "grass") {
-                    if (Math.floor(100 * Math.random()) >= 99) {
+                    let x = Math.floor(100 * Math.random());
+                    if (x >= 99) {
                         this.tileArray[i][j] = new Tile("coin");
                     }
                 }
             }
         }
         this.assignTiles();
+    }
+    updateScore() {
+        document.getElementById("scoreText").innerHTML = this.playerScore;
     }
 };
