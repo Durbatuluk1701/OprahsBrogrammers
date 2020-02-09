@@ -1,3 +1,107 @@
+@media screen and (max-device-width: 640px){
+    body {
+        background-image: url(./image-folder/Water.png);
+        
+    }
+    
+    .title {
+        color: white;
+        text-align: center;
+        font-family: arial; 
+        height: 30px;
+        width: 118%;
+        background-color: cornflowerblue;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #startbutton {
+        margin-top: 10px;
+        height: 25px;
+        width: 50px;
+    }
+    
+    #subtitle {
+        color: white;
+        text-align: center;
+        font-family: arial;
+    }
+    #game {
+        position: absolute;
+        left: 30.25%;
+    }
+    
+    img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    /* #key {
+        text-align: center;
+        background-color: gainsboro;
+        opacity: .80;
+        height: 93.75px;
+        width: 375px;
+        margin-bottom: 15px;
+    }
+    
+    .instruction {
+        font-family: arial;
+        font-size: 10px;
+    
+    }
+    
+    #list {
+        margin-bottom: .625px;
+    }
+    
+    #jayhawk {
+        height: 150px;
+        width: 150px;
+        float: left;
+        margin-left: 18%;
+    }
+    
+    #jayhawk2 {
+        height: 150px;
+        width: 150px;
+        float: right;
+        margin-right: 18%;
+    }
+    */
+    #score {
+        float: right;
+        background-color: gainsboro;
+        height: 93.75px;
+        width: 93.75px;
+        margin-right: 18%;
+    }
+    
+    #grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        background-image: url(./image-folder/Grass.png);
+        padding: .5%;
+        height: 405px;
+        width: 405px;
+        
+    }
+    
+    .box {
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        font-size: .625px;
+        text-align: center;
+        overflow: hidden;
+    }
+}
+@media screen and (min-width: 640px){
+
+/*actual css for website */
+
 body {
     background-image: url(./image-folder/Water.png);
     
@@ -92,4 +196,5 @@ img {
     font-size: 10px;
     text-align: center;
     overflow: hidden;
+}
 }
