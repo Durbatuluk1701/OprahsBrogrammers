@@ -32,6 +32,8 @@ Date: 02-08-2020
                     break;
                 }
                 grid.moveBoss();
+                grid.spawnCoins();
+                grid.updateScore();
                 grid.assignTiles();
             };
         }
@@ -46,10 +48,9 @@ Date: 02-08-2020
     <div id=subtitle>
         <p>Created by: Alex, Cole, Jet, and Will</p>
     </div>
-    <!-- <img id = "jayhawk" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
-    <img id = "jayhawk2" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
-    -->
     <div id = "score">
+        <h2><b>Current Score:</b></h2>
+        <h3 id="scoreText">0</h3>
     </div>
    <div id="key">
        <button class = "instruction" id = "startbutton" onclick="startGame();">Start</button>
