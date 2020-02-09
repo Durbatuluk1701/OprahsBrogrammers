@@ -14,6 +14,8 @@ class TileGrid {
         this.tileArray = {
 
         };
+        this.gridHeight = 5;
+        this.gridWidth = 5;
         this.gameOver = false;
         this.time = 0;
         this.playerScore = 0;
@@ -368,6 +370,16 @@ class TileGrid {
             console.log(this.tileArray);
         }
     }
-
-    //coinSound
+    spawnCoins() {
+        for (let i = 0; i < this.gridHeight; i++) {
+            for (let j = 0; j < this.gridWidth; j++) {
+                if (this.tileArray[i][j].type == "grass") {
+                    if (Math.floor(100 * Math.random()) >= 99) {
+                        this.tileArray[i][j] = new Tile("coin");
+                    }
+                }
+            }
+        }
+        this.assignTiles();
+    }
 };
