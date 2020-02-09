@@ -399,9 +399,7 @@ class TileGrid {
             console.log(this.tileArray);
         }
     }
-<<<<<<< HEAD
     //coinSound
-=======
     spawnCoins() {
         for (let i = 0; i < this.gridHeight; i++) {
             for (let j = 0; j < this.gridWidth; j++) {
@@ -418,5 +416,4 @@ class TileGrid {
     updateScore() {
         document.getElementById("scoreText").innerHTML = this.playerScore;
     }
->>>>>>> 2026353c3b9c9ea5530cead1c7e8d2eeba0b93bf
 };
