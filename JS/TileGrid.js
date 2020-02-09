@@ -176,10 +176,10 @@ class TileGrid {
     gameLost() {
         setTimeout(() => {
             var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
-            var x = document.getElementById("DefeatSong.mp3");
-            function playAudio() {
-                 x.play();
-            }
+        
+            // var audio = new Audio('C:\Users\Alex\source\repos\OprahsBrogrammers\audio-folder\DefeatSong.mp3')
+            // audio.play();
+            
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
             }
