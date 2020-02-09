@@ -151,10 +151,29 @@ class TileGrid {
         }
     }
     restartGame() {
+        this.tileArray = {
+
+        };
+        this.gameOver = false;
+        this.time = 0;
+        this.playerScore = 0;
+        this.bossExists = false;
+        this.castleExists = false;
+        this.playerExists = false;
+        this.playerX = null;
+        this.playerY = null;
+        this.castleX = null;
+        this.castleY = null;
+        this.bossX = null;
+        this.bossY = null;
         this.generateTiles();
         this.assignTiles();
     }
     gameLost() {
+        var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+        if (playAgain.toLowerCase() == "y") {
+            this.restartGame();
+        }
         this.gameOver = true;
         console.log("GAME OVER");
     }
@@ -194,6 +213,97 @@ class TileGrid {
             return (this.bossY-1 < 5 && this.bossY-1 >= 0 ? true : false);
         }
         return false;
+    }
+    moveBoss() {
+        console.log("STARTING BOSS MOVE");
+        let changeX = (this.bossX-this.playerX)/2;
+        let changeY = (this.bossY-this.playerY)/2;
+        console.log(changeX);
+        console.log(changeY);
+        if (Math.abs(changeX) > Math.abs(changeY)) {
+            if (changeX > 0) {
+                this.moveBossUp();
+            }
+            else {
+                this.moveBossDown();
+            }
+            return;
+        }
+        if (Math.abs(changeX) <= Math.abs(changeY)) {
+            if (changeY > 0) {
+                this.moveBossLeft();
+            }
+            else {
+                this.moveBossRight();
+            }
+            return;
+        }
+        // if (changeX > 0 && Math.abs(changeX) >= Math.abs(changeY)) {
+        //     this.moveBossUp();
+        //     return;
+        // }
+        // if (changeY > 0 && Math.abs(changeY) >= Math.abs(changeX)) {
+        //     this.moveBossLeft();
+        //     return;
+        // }
+        // if (changeX <= 0 && Math.abs(changeX) <= Math.abs(changeY)) {
+        //     this.moveBossRight();
+        //     return;
+        // }
+        // if (changeY <= 0 && Math.abs(changeY) <= Math.abs(changeX)) {
+        //     this.moveBossDown();
+        //     return;
+        // }
+    }
+    moveBossLeft() {
+        if (this.tileArray[this.bossX][this.bossY-1].type == "player") {
+            this.gameLost();
+        }
+        if (this.tileArray[this.bossX][this.bossY-1].type == "castle") {
+            return
+        }
+        this.tileArray[this.bossX][this.bossY-1] = new Tile("boss");
+        this.tileArray[this.bossX][this.bossY] = new Tile("grass");
+        this.bossY--;
+        console.log(this.tileArray);
+    }
+    moveBossUp() {
+        if (this.tileArray[this.bossX-1][this.bossY].type == "player") {
+            this.gameLost();
+        }
+        if (this.tileArray[this.bossX-1][this.bossY].type == "castle") {
+            return
+        }
+        this.tileArray[this.bossX-1][this.bossY] = new Tile("boss");
+        this.tileArray[this.bossX][this.bossY] = new Tile("grass");
+        this.bossX--;
+        console.log(this.tileArray);
+    }
+    moveBossRight() {
+        if (this.tileArray[this.bossX][this.bossY+1].type == "player") {
+            this.gameLost();
+        }
+        if (this.tileArray[this.bossX][this.bossY+1].type == "castle") {
+            return
+        }
+        this.tileArray[this.bossX][this.bossY+1] = new Tile("boss");
+        this.tileArray[this.bossX][this.bossY] = new Tile("grass");
+        this.bossY++;
+        console.log(this.tileArray);
+    }
+    moveBossDown() {
+        console.log(this.bossX);
+        console.log(this.bossY);
+        if (this.tileArray[this.bossX+1][this.bossY].type == "player") {
+            this.gameLost();
+        }
+        if (this.tileArray[this.bossX+1][this.bossY].type == "castle") {
+            return
+        }
+        this.tileArray[this.bossX+1][this.bossY] = new Tile("boss");
+        this.tileArray[this.bossX][this.bossY] = new Tile("grass");
+        this.bossX++;
+        console.log(this.tileArray);
     }
     movePlayerLeft() {
         if (this.playerMovePossible("y-")) {
