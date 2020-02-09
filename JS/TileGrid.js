@@ -220,22 +220,40 @@ class TileGrid {
         let changeY = (this.bossY-this.playerY)/2;
         console.log(changeX);
         console.log(changeY);
-        if (changeX > 0 && Math.abs(changeX) > Math.abs(changeY)) {
-            this.moveBossLeft();
+        if (Math.abs(changeX) > Math.abs(changeY)) {
+            if (changeX > 0) {
+                this.moveBossUp();
+            }
+            else {
+                this.moveBossDown();
+            }
             return;
         }
-        if (changeY > 0 && Math.abs(changeY) > Math.abs(changeX)) {
-            this.moveBossUp();
+        if (Math.abs(changeX) <= Math.abs(changeY)) {
+            if (changeY > 0) {
+                this.moveBossLeft();
+            }
+            else {
+                this.moveBossRight();
+            }
             return;
         }
-        if (changeX <= 0 && Math.abs(changeX) <= Math.abs(changeY)) {
-            this.moveBossRight();
-            return;
-        }
-        if (changeY <= 0 && Math.abs(changeY) <= Math.abs(changeX)) {
-            this.moveBossDown();
-            return;
-        }
+        // if (changeX > 0 && Math.abs(changeX) >= Math.abs(changeY)) {
+        //     this.moveBossUp();
+        //     return;
+        // }
+        // if (changeY > 0 && Math.abs(changeY) >= Math.abs(changeX)) {
+        //     this.moveBossLeft();
+        //     return;
+        // }
+        // if (changeX <= 0 && Math.abs(changeX) <= Math.abs(changeY)) {
+        //     this.moveBossRight();
+        //     return;
+        // }
+        // if (changeY <= 0 && Math.abs(changeY) <= Math.abs(changeX)) {
+        //     this.moveBossDown();
+        //     return;
+        // }
     }
     moveBossLeft() {
         if (this.tileArray[this.bossX][this.bossY-1].type == "player") {
