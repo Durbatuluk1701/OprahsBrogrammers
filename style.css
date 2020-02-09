@@ -156,7 +156,7 @@ img {
     float: left;
     text-align: center;
     background-color: gainsboro;
-    opacity: .80;
+    /* opacity: .80; */
     height:600px;
     width: 250px;
     margin-bottom: 15px;
@@ -188,7 +188,7 @@ img {
     height: 600px;
     width: 250px;
     margin-right: 10.25%;
-    opacity: .80;
+  /*  opacity: .80; */
 }
 
 #grid-container {
