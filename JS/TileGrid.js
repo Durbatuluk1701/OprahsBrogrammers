@@ -235,23 +235,40 @@ class TileGrid {
             let changeY = (this.bossY-this.playerY)/2;
             console.log(changeX);
             console.log(changeY);
-            if (Math.abs(changeX) > Math.abs(changeY)) {
-                if (changeX > 0) {
-                    this.moveBossUp();
+            if (Math.floor(Math.random() * 100) > this.bossIntelligence) {
+                if (Math.abs(changeX) > Math.abs(changeY)) {
+                    if (changeX > 0) {
+                        this.moveBossUp();
+                    }
+                    else {
+                        this.moveBossDown();
+                    }
+                    return;
                 }
-                else {
-                    this.moveBossDown();
+                if (Math.abs(changeX) <= Math.abs(changeY)) {
+                    if (changeY > 0) {
+                        this.moveBossLeft();
+                    }
+                    else {
+                        this.moveBossRight();
+                    }
+                    return;
                 }
-                return;
             }
-            if (Math.abs(changeX) <= Math.abs(changeY)) {
-                if (changeY > 0) {
+            else {
+                if (Math.floor(Math.random() * 4) > 3) {
+                    this.moveBossDown();
+                    return;
+                }
+                if (Math.floor(Math.random() * 4) > 2) {
                     this.moveBossLeft();
+                    return;
                 }
-                else {
+                if (Math.floor(Math.random() * 4) > 1) {
                     this.moveBossRight();
+                    return;
                 }
-                return;
+                this.moveBossUp();
             }
         }
     }
