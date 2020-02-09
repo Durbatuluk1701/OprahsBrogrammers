@@ -171,11 +171,16 @@ class TileGrid {
     }
     gameLost() {
         var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+        var x = document.getElementById("DefeatSong.mp3");
+        function playAudio() {
+             x.play();
+        }
         if (playAgain.toLowerCase() == "y") {
             this.restartGame();
         }
         this.gameOver = true;
         console.log("GAME OVER");
+        
     }
     gameWon() {
         var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
@@ -373,4 +378,6 @@ class TileGrid {
             console.log(this.tileArray);
         }
     }
+
+    //coinSound
 };
