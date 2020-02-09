@@ -108,18 +108,18 @@ body {
 }
 
 .title {
-    color: white;
+    color: orange;
     text-align: center;
     font-family: arial; 
     height: 50px;
     width: 100%;
     background-color: cornflowerblue;
-    margin-top: 10px;
+    margin-top: -22px;
 }
 #startbutton {
     margin-top: 10px;
-    height: 40px;
-    width: 80px;
+    height: 50px;
+    width: 100px;
 }
 
 #subtitle {
@@ -132,54 +132,67 @@ body {
     left: 30.25%;
 }
 
+h2 {
+    color: orange;
+    font-family: arial;
+    opacity: 1;
+    text-align: center;
+}
+
+#scoreText {
+    color: goldenrod;
+    font-size: 2in;
+    text-align: center;
+}
 img {
     height: 100%;
     width: 100%;
 }
-
+#buttext {
+    text-align: center;
+    color: red;
+}
 #key {
+    float: left;
     text-align: center;
     background-color: gainsboro;
-    opacity: .80;
-    height: 150px;
-    width: 600px;
+    /* opacity: .80; */
+    height:600px;
+    width: 250px;
     margin-bottom: 15px;
-    margin-left: 30.25%;
+    margin-left: 10.25%;
 }
 
 .instruction {
     font-family: arial;
     font-size: 16px;
+    text-align: left;
+    margin-left: 1px;
+    margin-right: 5px;
 
 }
 
 #list {
     margin-bottom: 10px;
 }
-/*
+
 #jayhawk {
     height: 150px;
     width: 150px;
-    float: left;
-    margin-left: 18%;
+    margin-top: 50px;
 }
 
-#jayhawk2 {
-    height: 150px;
-    width: 150px;
-    float: right;
-    margin-right: 18%;
-}
-*/
 #score {
     float: right;
     background-color: gainsboro;
-    height: 150px;
-    width: 150px;
-    margin-right: 18%;
+    height: 600px;
+    width: 250px;
+    margin-right: 10.25%;
+  /*  opacity: .80; */
 }
 
 #grid-container {
+    float: middle;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     background-image: url(./image-folder/Grass.png);

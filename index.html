@@ -6,13 +6,14 @@ Date: 02-08-2020
 -->
 
 <head>
-    <title>Game</title>
+    <title>KOTOC</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="JS/TileGrid.js"></script>
     <script type="text/javascript">
         function startGame()
         {
             var grid = new TileGrid();
+            grid.updateScore();
             grid.generateTiles();
             grid.assignTiles();
             document.onkeydown = function(event) {
@@ -32,6 +33,8 @@ Date: 02-08-2020
                     break;
                 }
                 grid.moveBoss();
+                grid.spawnCoins();
+                grid.updateScore();
                 grid.assignTiles();
             };
         }
@@ -44,20 +47,20 @@ Date: 02-08-2020
         <h1>Knights of the Orange Castle</h1>
     </div>
     <div id=subtitle>
-        <p>Created by: Alex, Cole, Jet, and Will</p>
+        <p>Created by: Alex Wilhelm, Cole Stinton, Jet Semrick, and Will Thomas</p>
     </div>
-    <!-- <img id = "jayhawk" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
-    <img id = "jayhawk2" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/400px-Kansas_Jayhawks_logo.svg.png" alt = "jayhawk">
-    -->
     <div id = "score">
+        <h2><b>Coins Collected:</b></h2>
+        <h3 id="scoreText">0</h3>
     </div>
    <div id="key">
-       <button class = "instruction" id = "startbutton" onclick="startGame();">Start</button>
+       <button class = "instruction" id = "startbutton" onclick="startGame();"><p id = "buttext">Start</p></button>
        <br id = "list" class = "instruction"><br><ol>
-        <li class = "instruction">Use the arrow keys to move your character</li>
-        <li class = "instruction">Try to reach the castle</li>
+        <li class = "instruction">Use arrow keys to move your character.</li>
+        <li class = "instruction">Earn as many coins as possible and try to reach the castle.</li>
         <li class = "instruction">Don't get caught by the evil knight!</li>
    </ol>
+   <img id="jayhawk" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kansas_Jayhawks_logo.svg/1200px-Kansas_Jayhawks_logo.svg.png" alt="error">
 </div>
     <!-- tile grid-->
     <div id="game">
@@ -90,16 +93,10 @@ Date: 02-08-2020
             <div class="box" id="box24"></div>
             <div class="box" id="box25"></div>
         </div>
-        <audio loop autoplay id="audio">
+            <audio controls loop autoplay id="audio">
             <source src = "audio-folder/MainThemeSong.mp3">
             <source src = "audio-folder/MainThemeSong.ogg">
         </audio>
-        <small>Audio by <a href="audio-folder/MainThemeSong.mp3"></a></small>
-        <style>
-            #audio {
-            display: block;
-            }
-        </style>
     </div>
     <script type="text/javascript">
         document.onkeydown = function(event) {

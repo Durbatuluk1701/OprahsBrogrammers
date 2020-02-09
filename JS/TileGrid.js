@@ -14,6 +14,9 @@ class TileGrid {
         this.tileArray = {
 
         };
+        this.bossIntelligence = 50;
+        this.gridHeight = 5;
+        this.gridWidth = 5;
         this.gameOver = false;
         this.time = 0;
         this.playerScore = 0;
@@ -173,18 +176,40 @@ class TileGrid {
     gameLost() {
         setTimeout(() => {
             var playAgain = window.prompt("YOU LOST!!!\n\nPlay Again (y/n)?");
+            var x = document.getElementById("DefeatSong.mp3");
+            function playAudio() {
+                 x.play();
+            }
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
+            }
+            else {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        let boxNum = "box" + (((i*5) + j)+1);
+                        document.getElementById(boxNum).innerHTML = "";
+                    }
+                }
             }
             this.gameOver = true;
             console.log("GAME OVER");
         }, 500);
+
+        
     }
     gameWon() {
         setTimeout(() => {
             var playAgain = window.prompt("YOU WIN!!!\n\nPlay Again (y/n)?");
             if (playAgain.toLowerCase() == "y") {
                 this.restartGame();
+            }
+            else {
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        let boxNum = "box" + (((i*5) + j)+1);
+                        document.getElementById(boxNum).innerHTML = "";
+                    }
+                }
             }
             console.log("GAME WON");
         }, 500);
@@ -220,28 +245,47 @@ class TileGrid {
         return false;
     }
     moveBoss() {
-        console.log("STARTING BOSS MOVE");
-        let changeX = (this.bossX-this.playerX)/2;
-        let changeY = (this.bossY-this.playerY)/2;
-        console.log(changeX);
-        console.log(changeY);
-        if (Math.abs(changeX) > Math.abs(changeY)) {
-            if (changeX > 0) {
+        if (this.gameOver != true) {
+            console.log("STARTING BOSS MOVE");
+            let changeX = (this.bossX-this.playerX)/2;
+            let changeY = (this.bossY-this.playerY)/2;
+            console.log(changeX);
+            console.log(changeY);
+            if (Math.floor(Math.random() * 100) > this.bossIntelligence) {
+                if (Math.abs(changeX) > Math.abs(changeY)) {
+                    if (changeX > 0) {
+                        this.moveBossUp();
+                    }
+                    else {
+                        this.moveBossDown();
+                    }
+                    return;
+                }
+                if (Math.abs(changeX) <= Math.abs(changeY)) {
+                    if (changeY > 0) {
+                        this.moveBossLeft();
+                    }
+                    else {
+                        this.moveBossRight();
+                    }
+                    return;
+                }
+            }
+            else {
+                if (Math.floor(Math.random() * 4) > 3) {
+                    this.moveBossDown();
+                    return;
+                }
+                if (Math.floor(Math.random() * 4) > 2) {
+                    this.moveBossLeft();
+                    return;
+                }
+                if (Math.floor(Math.random() * 4) > 0) {
+                    this.moveBossRight();
+                    return;
+                }
                 this.moveBossUp();
             }
-            else {
-                this.moveBossDown();
-            }
-            return;
-        }
-        if (Math.abs(changeX) <= Math.abs(changeY)) {
-            if (changeY > 0) {
-                this.moveBossLeft();
-            }
-            else {
-                this.moveBossRight();
-            }
-            return;
         }
     }
     moveBossLeft() {
@@ -361,5 +405,21 @@ class TileGrid {
             this.playerX++;
             console.log(this.tileArray);
         }
+    }
+    spawnCoins() {
+        for (let i = 0; i < this.gridHeight; i++) {
+            for (let j = 0; j < this.gridWidth; j++) {
+                if (this.tileArray[i][j].type == "grass") {
+                    let x = Math.floor(100 * Math.random());
+                    if (x >= 99) {
+                        this.tileArray[i][j] = new Tile("coin");
+                    }
+                }
+            }
+        }
+        this.assignTiles();
+    }
+    updateScore() {
+        document.getElementById("scoreText").innerHTML = this.playerScore;
     }
 };
