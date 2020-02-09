@@ -151,6 +151,7 @@ class TileGrid {
         }
     }
     restartGame() {
+        console.log("Restarting Game");
         this.tileArray = {
 
         };
